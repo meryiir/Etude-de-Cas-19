@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project xmlns:con="http://eviware.com/soapui/config" activeEnvironment="Default" name="Hotel Reservation SOAP API" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" id="hotel-reservation-soap">
+   <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.WsdlProject@enableInlinedWsdls">true</con:setting>
+      <con:setting id="com.eviware.soapui.impl.wsdl.WsdlProject@enableMtom">false</con:setting>
+      <con:setting id="com.eviware.soapui.impl.wsdl.WsdlProject@name">Hotel Reservation SOAP API</con:setting>
+      <con:setting id="com.eviware.soapui.impl.wsdl.WsdlProject@wsdlCache">true</con:setting>
+   </con:settings>
+   <con:interface xsi:type="con:WsdlInterface" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bindingName="{http://hotel.com/reservation/soap}ReservationPortBinding" name="ReservationPortBinding" type="wsdl" wsaVersion="NONE" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/soap/reservations.wsdl" id="reservation-port-binding">
+      <con:settings/>
+      <con:definitionCache type="WSDL" id="reservation-wsdl">
+         <con:definition>http://localhost:8080/soap/reservations.wsdl</con:definition>
+      </con:definitionCache>
+      <con:endpoints>
+         <con:endpoint>http://localhost:8080/soap</con:endpoint>
+      </con:endpoints>
+      <con:operation id="create-reservation-op" isOneWay="false" action="" name="createReservation" bindingOperationName="createReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+         <con:settings/>
+         <con:call id="create-reservation-request" name="Request 1">
+            <con:settings>
+               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/soap</con:endpoint>
+            <con:request id="create-req" name="Request 1" mediaType="text/xml">
+               <con:settings>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@force_mtom">false</con:setting>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@inline_response_signature">false</con:setting>
+               </con:settings>
+               <con:endpoint>http://localhost:8080/soap</con:endpoint>
+               <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:createReservationRequest>
+         <res:dateDebut>2024-12-01</res:dateDebut>
+         <res:dateFin>2024-12-05</res:dateFin>
+         <res:preferences>Vue sur mer, étage élevé</res:preferences>
+      </res:createReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            </con:request>
+         </con:call>
+      </con:operation>
+      <con:operation id="get-reservation-op" isOneWay="false" action="" name="getReservation" bindingOperationName="getReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+         <con:settings/>
+         <con:call id="get-reservation-request" name="Request 1">
+            <con:settings>
+               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/soap</con:endpoint>
+            <con:request id="get-req" name="Request 1" mediaType="text/xml">
+               <con:settings>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@force_mtom">false</con:setting>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@inline_response_signature">false</con:setting>
+               </con:settings>
+               <con:endpoint>http://localhost:8080/soap</con:endpoint>
+               <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:getReservationRequest>
+         <res:id>1</res:id>
+      </res:getReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            </con:request>
+         </con:call>
+      </con:operation>
+      <con:operation id="update-reservation-op" isOneWay="false" action="" name="updateReservation" bindingOperationName="updateReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+         <con:settings/>
+         <con:call id="update-reservation-request" name="Request 1">
+            <con:settings>
+               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/soap</con:endpoint>
+            <con:request id="update-req" name="Request 1" mediaType="text/xml">
+               <con:settings>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@force_mtom">false</con:setting>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@inline_response_signature">false</con:setting>
+               </con:settings>
+               <con:endpoint>http://localhost:8080/soap</con:endpoint>
+               <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:updateReservationRequest>
+         <res:id>1</res:id>
+         <res:dateDebut>2024-12-02</res:dateDebut>
+         <res:dateFin>2024-12-06</res:dateFin>
+         <res:preferences>Vue sur jardin, chambre non-fumeur</res:preferences>
+      </res:updateReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            </con:request>
+         </con:call>
+      </con:operation>
+      <con:operation id="delete-reservation-op" isOneWay="false" action="" name="deleteReservation" bindingOperationName="deleteReservation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+         <con:settings/>
+         <con:call id="delete-reservation-request" name="Request 1">
+            <con:settings>
+               <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+            </con:settings>
+            <con:encoding>UTF-8</con:encoding>
+            <con:endpoint>http://localhost:8080/soap</con:endpoint>
+            <con:request id="delete-req" name="Request 1" mediaType="text/xml">
+               <con:settings>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@force_mtom">false</con:setting>
+                  <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@inline_response_signature">false</con:setting>
+               </con:settings>
+               <con:endpoint>http://localhost:8080/soap</con:endpoint>
+               <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:deleteReservationRequest>
+         <res:id>1</res:id>
+      </res:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+            </con:request>
+         </con:call>
+      </con:operation>
+   </con:interface>
+   <con:testSuite id="test-suite-1" name="Test Suite 1">
+      <con:settings/>
+      <con:runType>SEQUENTIAL</con:runType>
+      <con:testCase id="test-case-create" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Create Reservation" searchProperties="true">
+         <con:settings/>
+         <con:testStep type="request" id="test-step-create" name="Create Reservation">
+            <con:settings/>
+            <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="POST" name="Create Reservation" id="create-step">
+               <con:interface>ReservationPortBinding</con:interface>
+               <con:operation>createReservation</con:operation>
+               <con:request name="Create Reservation" id="create-request">
+                  <con:settings>
+                     <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+                  </con:settings>
+                  <con:encoding>UTF-8</con:encoding>
+                  <con:endpoint>http://localhost:8080/soap</con:endpoint>
+                  <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:createReservationRequest>
+         <res:dateDebut>2024-12-01</res:dateDebut>
+         <res:dateFin>2024-12-05</res:dateFin>
+         <res:preferences>Vue sur mer, étage élevé</res:preferences>
+      </res:createReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+                  <con:credentials>
+                     <con:authType>No Authorization</con:authType>
+                  </con:credentials>
+                  <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                  <con:jmsPropertyConfig/>
+                  <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hotel.com/reservation/soap/createReservation"/>
+                  <con:wsrmConfig version="1.2"/>
+               </con:request>
+            </con:config>
+         </con:testStep>
+      </con:testCase>
+      <con:testCase id="test-case-get" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Get Reservation" searchProperties="true">
+         <con:settings/>
+         <con:testStep type="request" id="test-step-get" name="Get Reservation">
+            <con:settings/>
+            <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="POST" name="Get Reservation" id="get-step">
+               <con:interface>ReservationPortBinding</con:interface>
+               <con:operation>getReservation</con:operation>
+               <con:request name="Get Reservation" id="get-request">
+                  <con:settings>
+                     <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+                  </con:settings>
+                  <con:encoding>UTF-8</con:encoding>
+                  <con:endpoint>http://localhost:8080/soap</con:endpoint>
+                  <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:getReservationRequest>
+         <res:id>1</res:id>
+      </res:getReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+                  <con:credentials>
+                     <con:authType>No Authorization</con:authType>
+                  </con:credentials>
+                  <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                  <con:jmsPropertyConfig/>
+                  <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hotel.com/reservation/soap/getReservation"/>
+                  <con:wsrmConfig version="1.2"/>
+               </con:request>
+            </con:config>
+         </con:testStep>
+      </con:testCase>
+      <con:testCase id="test-case-update" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Update Reservation" searchProperties="true">
+         <con:settings/>
+         <con:testStep type="request" id="test-step-update" name="Update Reservation">
+            <con:settings/>
+            <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="POST" name="Update Reservation" id="update-step">
+               <con:interface>ReservationPortBinding</con:interface>
+               <con:operation>updateReservation</con:operation>
+               <con:request name="Update Reservation" id="update-request">
+                  <con:settings>
+                     <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+                  </con:settings>
+                  <con:encoding>UTF-8</con:encoding>
+                  <con:endpoint>http://localhost:8080/soap</con:endpoint>
+                  <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:updateReservationRequest>
+         <res:id>1</res:id>
+         <res:dateDebut>2024-12-02</res:dateDebut>
+         <res:dateFin>2024-12-06</res:dateFin>
+         <res:preferences>Vue sur jardin, chambre non-fumeur</res:preferences>
+      </res:updateReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+                  <con:credentials>
+                     <con:authType>No Authorization</con:authType>
+                  </con:credentials>
+                  <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                  <con:jmsPropertyConfig/>
+                  <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hotel.com/reservation/soap/updateReservation"/>
+                  <con:wsrmConfig version="1.2"/>
+               </con:request>
+            </con:config>
+         </con:testStep>
+      </con:testCase>
+      <con:testCase id="test-case-delete" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Test Delete Reservation" searchProperties="true">
+         <con:settings/>
+         <con:testStep type="request" id="test-step-delete" name="Delete Reservation">
+            <con:settings/>
+            <con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" method="POST" name="Delete Reservation" id="delete-step">
+               <con:interface>ReservationPortBinding</con:interface>
+               <con:operation>deleteReservation</con:operation>
+               <con:request name="Delete Reservation" id="delete-request">
+                  <con:settings>
+                     <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/&gt;</con:setting>
+                  </con:settings>
+                  <con:encoding>UTF-8</con:encoding>
+                  <con:endpoint>http://localhost:8080/soap</con:endpoint>
+                  <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:res="http://hotel.com/reservation/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <res:deleteReservationRequest>
+         <res:id>1</res:id>
+      </res:deleteReservationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+                  <con:credentials>
+                     <con:authType>No Authorization</con:authType>
+                  </con:credentials>
+                  <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                  <con:jmsPropertyConfig/>
+                  <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://hotel.com/reservation/soap/deleteReservation"/>
+                  <con:wsrmConfig version="1.2"/>
+               </con:request>
+            </con:config>
+         </con:testStep>
+      </con:testCase>
+   </con:testSuite>
+   <con:properties/>
+   <con:wssContainer/>
+   <con:oAuth2ProfileContainer/>
+   <con:oAuth1ProfileContainer/>
+</con:soapui-project>
+

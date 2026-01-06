@@ -1,0 +1,24 @@
+type Query {
+    getReservation(id: ID!): Reservation
+    getAllReservations: [Reservation]
+}
+
+type Mutation {
+    createReservation(input: ReservationInput!): Reservation
+    updateReservation(id: ID!, input: ReservationInput!): Reservation
+    deleteReservation(id: ID!): Boolean
+}
+
+type Reservation {
+    id: ID
+    dateDebut: String
+    dateFin: String
+    preferences: String
+}
+
+input ReservationInput {
+    dateDebut: String!
+    dateFin: String!
+    preferences: String
+}
+

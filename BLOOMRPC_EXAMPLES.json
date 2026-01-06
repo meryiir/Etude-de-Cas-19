@@ -1,0 +1,132 @@
+{
+  "service": "com.hotel.reservation.ReservationService",
+  "server": "localhost:9090",
+  "protoFile": "src/main/proto/reservation.proto",
+  "examples": {
+    "CreateReservation": {
+      "description": "Crée une nouvelle réservation",
+      "request": {
+        "dateDebut": "2024-01-15",
+        "dateFin": "2024-01-20",
+        "preferences": "Chambre au calme, vue sur jardin"
+      },
+      "expectedResponse": {
+        "id": 1,
+        "dateDebut": "2024-01-15",
+        "dateFin": "2024-01-20",
+        "preferences": "Chambre au calme, vue sur jardin"
+      }
+    },
+    "GetReservation": {
+      "description": "Récupère une réservation par son ID",
+      "request": {
+        "id": 1
+      },
+      "expectedResponse": {
+        "id": 1,
+        "dateDebut": "2024-01-15",
+        "dateFin": "2024-01-20",
+        "preferences": "Chambre au calme, vue sur jardin"
+      },
+      "note": "Remplacez 'id' par l'ID d'une réservation existante"
+    },
+    "UpdateReservation": {
+      "description": "Met à jour une réservation existante",
+      "request": {
+        "id": 1,
+        "dateDebut": "2024-01-15",
+        "dateFin": "2024-01-22",
+        "preferences": "Chambre avec balcon, vue sur mer"
+      },
+      "expectedResponse": {
+        "id": 1,
+        "dateDebut": "2024-01-15",
+        "dateFin": "2024-01-22",
+        "preferences": "Chambre avec balcon, vue sur mer"
+      },
+      "note": "Remplacez 'id' par l'ID d'une réservation existante"
+    },
+    "DeleteReservation": {
+      "description": "Supprime une réservation",
+      "request": {
+        "id": 1
+      },
+      "expectedResponse": {
+        "success": true
+      },
+      "note": "Remplacez 'id' par l'ID d'une réservation existante"
+    }
+  },
+  "testScenario": {
+    "description": "Scénario de test complet dans l'ordre",
+    "steps": [
+      {
+        "step": 1,
+        "method": "CreateReservation",
+        "request": {
+          "dateDebut": "2024-01-15",
+          "dateFin": "2024-01-20",
+          "preferences": "Chambre au calme, vue sur jardin"
+        },
+        "action": "Créer une réservation et noter l'ID retourné"
+      },
+      {
+        "step": 2,
+        "method": "GetReservation",
+        "request": {
+          "id": 1
+        },
+        "action": "Récupérer la réservation créée (utiliser l'ID de l'étape 1)"
+      },
+      {
+        "step": 3,
+        "method": "UpdateReservation",
+        "request": {
+          "id": 1,
+          "dateDebut": "2024-01-15",
+          "dateFin": "2024-01-22",
+          "preferences": "Chambre avec balcon, vue sur mer"
+        },
+        "action": "Modifier la réservation (utiliser l'ID de l'étape 1)"
+      },
+      {
+        "step": 4,
+        "method": "GetReservation",
+        "request": {
+          "id": 1
+        },
+        "action": "Vérifier que la modification a été appliquée"
+      },
+      {
+        "step": 5,
+        "method": "DeleteReservation",
+        "request": {
+          "id": 1
+        },
+        "action": "Supprimer la réservation (utiliser l'ID de l'étape 1)"
+      },
+      {
+        "step": 6,
+        "method": "GetReservation",
+        "request": {
+          "id": 1
+        },
+        "action": "Vérifier que la réservation a été supprimée (doit retourner une erreur)"
+      }
+    ]
+  },
+  "notes": {
+    "dateFormat": "YYYY-MM-DD (ISO 8601)",
+    "examples": [
+      "2024-01-15",
+      "2024-12-31",
+      "2025-06-01"
+    ],
+    "invalidFormats": [
+      "15/01/2024",
+      "2024-1-5",
+      "01-15-2024"
+    ]
+  }
+}
+

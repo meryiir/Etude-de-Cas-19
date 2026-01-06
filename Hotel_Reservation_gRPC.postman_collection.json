@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "hotel-reservation-grpc",
+		"name": "Hotel Reservation - gRPC API",
+		"description": "Collection Postman dédiée pour tester l'API gRPC de réservation d'hôtel.\n\n**Serveur gRPC :** `localhost:9090`\n\n**Service :** `com.hotel.reservation.ReservationService`\n\n**Méthodes RPC disponibles :**\n- **CreateReservation** - Créer une nouvelle réservation\n- **GetReservation** - Récupérer une réservation par ID\n- **UpdateReservation** - Mettre à jour une réservation\n- **DeleteReservation** - Supprimer une réservation\n\n**Format des dates :** YYYY-MM-DD (ex: 2024-01-15)\n\n**Note importante :**\nPour utiliser cette collection, vous devez :\n1. Importer le fichier `src/main/proto/reservation.proto` dans Postman\n2. Configurer le serveur gRPC sur `localhost:9090`\n3. Utiliser Postman version 8.0 ou supérieure (support gRPC natif)\n\n**Alternative :** Si votre version de Postman ne supporte pas gRPC, utilisez BloomRPC ou grpcurl pour tester l'API gRPC.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateReservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme, vue sur jardin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "grpc://localhost:9090/com.hotel.reservation.ReservationService/CreateReservation",
+					"protocol": "grpc",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"com.hotel.reservation.ReservationService",
+						"CreateReservation"
+					]
+				},
+				"description": "Crée une nouvelle réservation via gRPC.\n\n**Méthode RPC :** `CreateReservation`\n\n**Request Message :** `CreateReservationRequest`\n```json\n{\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme, vue sur jardin\"\n}\n```\n\n**Response Message :** `ReservationResponse`\n```json\n{\n  \"id\": 1,\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme, vue sur jardin\"\n}\n```\n\n**Format des dates :** YYYY-MM-DD"
+			},
+			"response": []
+		},
+		{
+			"name": "GetReservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "grpc://localhost:9090/com.hotel.reservation.ReservationService/GetReservation",
+					"protocol": "grpc",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"com.hotel.reservation.ReservationService",
+						"GetReservation"
+					]
+				},
+				"description": "Récupère une réservation spécifique par son ID via gRPC.\n\n**Méthode RPC :** `GetReservation`\n\n**Request Message :** `GetReservationRequest`\n```json\n{\n  \"id\": 1\n}\n```\n\n**Response Message :** `ReservationResponse`\n```json\n{\n  \"id\": 1,\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme, vue sur jardin\"\n}\n```\n\n**Note :** Retourne une erreur si la réservation n'existe pas."
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateReservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-22\",\n  \"preferences\": \"Chambre avec balcon, vue sur mer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "grpc://localhost:9090/com.hotel.reservation.ReservationService/UpdateReservation",
+					"protocol": "grpc",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"com.hotel.reservation.ReservationService",
+						"UpdateReservation"
+					]
+				},
+				"description": "Met à jour une réservation existante via gRPC.\n\n**Méthode RPC :** `UpdateReservation`\n\n**Request Message :** `UpdateReservationRequest`\n```json\n{\n  \"id\": 1,\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-22\",\n  \"preferences\": \"Chambre avec balcon, vue sur mer\"\n}\n```\n\n**Response Message :** `ReservationResponse`\n```json\n{\n  \"id\": 1,\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-22\",\n  \"preferences\": \"Chambre avec balcon, vue sur mer\"\n}\n```\n\n**Format des dates :** YYYY-MM-DD"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteReservation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "grpc://localhost:9090/com.hotel.reservation.ReservationService/DeleteReservation",
+					"protocol": "grpc",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"com.hotel.reservation.ReservationService",
+						"DeleteReservation"
+					]
+				},
+				"description": "Supprime une réservation via gRPC.\n\n**Méthode RPC :** `DeleteReservation`\n\n**Request Message :** `DeleteReservationRequest`\n```json\n{\n  \"id\": 1\n}\n```\n\n**Response Message :** `DeleteReservationResponse`\n```json\n{\n  \"success\": true\n}\n```\n\n**Note :** Retourne `success: true` si la suppression a réussi."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "grpcHost",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"key": "grpcPort",
+			"value": "9090",
+			"type": "string"
+		},
+		{
+			"key": "serviceName",
+			"value": "com.hotel.reservation.ReservationService",
+			"type": "string"
+		},
+		{
+			"key": "reservationId",
+			"value": "1",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
+

@@ -1,0 +1,321 @@
+{
+	"info": {
+		"_postman_id": "hotel-reservation-api",
+		"name": "Hotel Reservation API",
+		"description": "Collection pour tester l'API REST de gestion des réservations d'hôtel\n\n**Note importante :** \n- Au démarrage de l'application, des données de test sont automatiquement créées :\n  - Client ID 1 : Jean Dupont (jean.dupont@example.com)\n  - Client ID 2 : Marie Martin (marie.martin@example.com)\n  - Chambre ID 1 : Standard (100€)\n  - Chambre ID 2 : Deluxe (200€)\n  - Chambre ID 3 : Suite (350€)\n- Utilisez ces IDs dans vos requêtes de test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Réservations",
+			"item": [
+				{
+					"name": "Créer une réservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client\": {\n    \"id\": 1\n  },\n  \"chambre\": {\n    \"id\": 1\n  },\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme, vue sur jardin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						},
+						"description": "Crée une nouvelle réservation.\n\n**Format simplifié (recommandé) :**\n```json\n{\n  \"client\": { \"id\": 1 },\n  \"chambre\": { \"id\": 1 },\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-20\",\n  \"preferences\": \"Chambre au calme\"\n}\n```\n\n**Données disponibles après démarrage :**\n- Clients : ID 1 (Jean Dupont), ID 2 (Marie Martin)\n- Chambres : ID 1 (Standard), ID 2 (Deluxe), ID 3 (Suite)"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir toutes les réservations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations"
+							]
+						},
+						"description": "Récupère la liste de toutes les réservations"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtenir une réservation par ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/{{reservationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"{{reservationId}}"
+							]
+						},
+						"description": "Récupère une réservation spécifique par son ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Modifier une réservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"client\": {\n    \"id\": 1\n  },\n  \"chambre\": {\n    \"id\": 2\n  },\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-22\",\n  \"preferences\": \"Chambre avec balcon, vue sur mer\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/{{reservationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"{{reservationId}}"
+							]
+						},
+						"description": "Met à jour une réservation existante par son ID.\n\n**Format JSON :**\n```json\n{\n  \"client\": { \"id\": 1 },\n  \"chambre\": { \"id\": 2 },\n  \"dateDebut\": \"2024-01-15\",\n  \"dateFin\": \"2024-01-22\",\n  \"preferences\": \"Chambre avec balcon\"\n}\n```\n\nLes IDs de client et chambre doivent exister en base de données."
+					},
+					"response": []
+				},
+				{
+					"name": "Supprimer une réservation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/reservations/{{reservationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reservations",
+								"{{reservationId}}"
+							]
+						},
+						"description": "Supprime une réservation par son ID"
+					},
+					"response": []
+				}
+			],
+			"description": "Collection de requêtes pour gérer les réservations d'hôtel"
+		},
+		{
+			"name": "GraphQL",
+			"item": [
+				{
+					"name": "Query - GetAllReservations",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetAllReservations {\n  getAllReservations {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/graphql",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Récupère toutes les réservations via GraphQL.\n\n**Query GraphQL :**\n```graphql\nquery GetAllReservations {\n  getAllReservations {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Query - GetReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query GetReservation($id: ID!) {\n  getReservation(id: $id) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}",
+								"variables": "{\n  \"id\": \"1\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/graphql",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Récupère une réservation spécifique par son ID via GraphQL.\n\n**Query GraphQL :**\n```graphql\nquery GetReservation($id: ID!) {\n  getReservation(id: $id) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}\n```\n\n**Variables :**\n```json\n{\n  \"id\": \"1\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Mutation - CreateReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation CreateReservation($input: ReservationInput!) {\n  createReservation(input: $input) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}",
+								"variables": "{\n  \"input\": {\n    \"dateDebut\": \"2024-01-15\",\n    \"dateFin\": \"2024-01-20\",\n    \"preferences\": \"Chambre au calme, vue sur jardin\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/graphql",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Crée une nouvelle réservation via GraphQL.\n\n**Mutation GraphQL :**\n```graphql\nmutation CreateReservation($input: ReservationInput!) {\n  createReservation(input: $input) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}\n```\n\n**Variables :**\n```json\n{\n  \"input\": {\n    \"dateDebut\": \"2024-01-15\",\n    \"dateFin\": \"2024-01-20\",\n    \"preferences\": \"Chambre au calme, vue sur jardin\"\n  }\n}\n```\n\n**Format des dates :** YYYY-MM-DD (ex: 2024-01-15)"
+					},
+					"response": []
+				},
+				{
+					"name": "Mutation - UpdateReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation UpdateReservation($id: ID!, $input: ReservationInput!) {\n  updateReservation(id: $id, input: $input) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}",
+								"variables": "{\n  \"id\": \"1\",\n  \"input\": {\n    \"dateDebut\": \"2024-01-15\",\n    \"dateFin\": \"2024-01-22\",\n    \"preferences\": \"Chambre avec balcon, vue sur mer\"\n  }\n}"
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/graphql",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Met à jour une réservation existante via GraphQL.\n\n**Mutation GraphQL :**\n```graphql\nmutation UpdateReservation($id: ID!, $input: ReservationInput!) {\n  updateReservation(id: $id, input: $input) {\n    id\n    dateDebut\n    dateFin\n    preferences\n  }\n}\n```\n\n**Variables :**\n```json\n{\n  \"id\": \"1\",\n  \"input\": {\n    \"dateDebut\": \"2024-01-15\",\n    \"dateFin\": \"2024-01-22\",\n    \"preferences\": \"Chambre avec balcon, vue sur mer\"\n  }\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Mutation - DeleteReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation DeleteReservation($id: ID!) {\n  deleteReservation(id: $id)\n}",
+								"variables": "{\n  \"id\": \"1\"\n}"
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/graphql",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"graphql"
+							]
+						},
+						"description": "Supprime une réservation via GraphQL.\n\n**Mutation GraphQL :**\n```graphql\nmutation DeleteReservation($id: ID!) {\n  deleteReservation(id: $id)\n}\n```\n\n**Variables :**\n```json\n{\n  \"id\": \"1\"\n}\n```\n\n**Retour :** `true` si la suppression a réussi, `false` sinon."
+					},
+					"response": []
+				}
+			],
+			"description": "Collection de requêtes GraphQL pour tester les queries et mutations définies dans le schéma.\n\n**Endpoint GraphQL :** `http://localhost:8080/graphql`\n\n**Opérations disponibles :**\n- **Queries :** getAllReservations, getReservation\n- **Mutations :** createReservation, updateReservation, deleteReservation"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "reservationId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "chambreId",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
+

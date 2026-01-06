@@ -48,8 +48,5 @@
 ![Postman Screenshot 5](img/postman/5.png)
 
 
-npm start
-```
 
-Le frontend sera accessible sur `http://localhost:3000`
 

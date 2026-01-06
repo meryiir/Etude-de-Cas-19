@@ -63,13 +63,13 @@ API de réservation d'hôtels implémentée avec REST, SOAP, GraphQL et gRPC.
 
 #### Captures d'écran SOAP UI
 
-(img/soapUI/1.png)
+![SOAP UI Screenshot 1](img/soapUI/1.png)
 
-(img/soapUI/2.png)
+![SOAP UI Screenshot 2](img/soapUI/2.png)
 
-(img/soapUI/3.png)
+![SOAP UI Screenshot 3](img/soapUI/3.png)
 
-(img/soapUI/4.png)
+![SOAP UI Screenshot 4](img/soapUI/4.png)
 
 ### GraphQL API
 - Endpoint: `http://localhost:8080/graphql`
@@ -84,24 +84,44 @@ API de réservation d'hôtels implémentée avec REST, SOAP, GraphQL et gRPC.
   - `updateReservation(id: ID!, input: ReservationInput!)` - Met à jour une réservation
   - `deleteReservation(id: ID!)` - Supprime une réservation
 
-#### Utiliser GraphQL avec Postman
-- Utiliser GraphQL Playground ou Postman pour tester les queries et mutations
-- La collection Postman inclut une section **GraphQL** avec toutes les requêtes préconfigurées
-- Voir le guide détaillé : [GUIDE_POSTMAN_GRAPHQL.md](GUIDE_POSTMAN_GRAPHQL.md)
+#### Captures d'écran GraphQL
+
+![GraphQL Screenshot 1](img/graphql/1.png)
+
+![GraphQL Screenshot 2](img/graphql/2.png)
+
+![GraphQL Screenshot 3](img/graphql/3.png)
+
+![GraphQL Screenshot 4](img/graphql/4.png)
 
 ### gRPC API
 - Port: `9090`
 - Service: `ReservationService`
+- Fichier proto: `src/main/proto/reservation.proto`
+
+#### Méthodes RPC disponibles
+- `CreateReservation` - Créer une nouvelle réservation
+- `GetReservation` - Récupérer une réservation par ID
+- `UpdateReservation` - Mettre à jour une réservation
+- `DeleteReservation` - Supprimer une réservation
+
+#### Captures d'écran gRPC (BloomRPC)
+
+![gRPC Screenshot 1](img/grpc/1.png)
+
+![gRPC Screenshot 2](img/grpc/2.png)
+
+![gRPC Screenshot 3](img/grpc/3.png)
+
+![gRPC Screenshot 4](img/grpc/4.png)
 
 ## Postman Collection
 
-Vous pouvez importer la collection Postman fournie (`Hotel_Reservation_API.postman_collection.json`) pour tester les différents endpoints.
+Vous pouvez importer les collections Postman fournies pour tester les différents endpoints :
 
-La collection inclut :
-- **Réservations** : Requêtes REST pour les opérations CRUD
-- **GraphQL** : Queries et mutations GraphQL pour tester l'API GraphQL
-
-Voir le guide détaillé pour GraphQL : [GUIDE_POSTMAN_GRAPHQL.md](GUIDE_POSTMAN_GRAPHQL.md)
+- `Hotel_Reservation_API.postman_collection.json` - Collection REST API
+- `Hotel_Reservation_GraphQL.postman_collection.json` - Collection GraphQL API
+- `Hotel_Reservation_gRPC.postman_collection.json` - Collection gRPC API
 
 ### Captures d'écran Postman
 
